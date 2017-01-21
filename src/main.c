@@ -10,6 +10,7 @@
 #include "common.h"
 #include "uart.h"
 #include "board.h"
+#include "servo.h"
 
 
 int main(void)

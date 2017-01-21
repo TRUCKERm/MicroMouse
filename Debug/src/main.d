@@ -1,5 +1,5 @@
 src/main.o: ../src/main.c \
- C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/common.h \
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/common.h \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/CMSIS/device/stm32f0xx.h \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/CMSIS/core/core_cm0.h \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/CMSIS/core/core_cmInstr.h \
@@ -34,10 +34,11 @@ src/main.o: ../src/main.c \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/StdPeriph_Driver/inc/stm32f0xx_usart.h \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/StdPeriph_Driver/inc/stm32f0xx_dac.h \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Utilities/STM32F072B-Discovery/stm32f072b_discovery.h \
- C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/uart.h \
- C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/board.h
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/uart.h \
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/board.h \
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/servo.h
 
-C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/common.h:
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/common.h:
 
 C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/CMSIS/device/stm32f0xx.h:
 
@@ -107,6 +108,8 @@ C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/StdPeriph_Driver/inc/s
 
 C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Utilities/STM32F072B-Discovery/stm32f072b_discovery.h:
 
-C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/uart.h:
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/uart.h:
 
-C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse_code/inc/board.h:
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/board.h:
+
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/servo.h:

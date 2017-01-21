@@ -338,7 +338,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 src/syscalls.o
  .debug_macro   0x00000000       0x88 src/syscalls.o
  .debug_line    0x00000000      0x610 src/syscalls.o
- .debug_str     0x00000000     0x7596 src/syscalls.o
+ .debug_str     0x00000000     0x7591 src/syscalls.o
  .comment       0x00000000       0x6f src/syscalls.o
  .debug_frame   0x00000000      0x264 src/syscalls.o
  .ARM.attributes
@@ -1327,15 +1327,15 @@ LOAD d:/eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.11.0.201610101
                 0x00000306       0x1e d:/eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.11.0.201610101338/tools/gcc-arm-none-eabi-5_4-2016q2-20160622-win32/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
 OUTPUT(MicroMouse.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x2ab2
+.debug_info     0x00000000     0x2aad
  .debug_info    0x00000000      0x2e4 src/board.o
  .debug_info    0x000002e4       0x9a src/main.o
  .debug_info    0x0000037e      0x2d5 src/system_stm32f0xx.o
  .debug_info    0x00000653      0x52a src/uart.o
- .debug_info    0x00000b7d       0x98 startup/startup_stm32f072.o
- .debug_info    0x00000c15      0x5ef C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
- .debug_info    0x00001204      0xa58 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
- .debug_info    0x00001c5c      0xe56 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
+ .debug_info    0x00000b7d       0x93 startup/startup_stm32f072.o
+ .debug_info    0x00000c10      0x5ef C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+ .debug_info    0x000011ff      0xa58 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
+ .debug_info    0x00001c57      0xe56 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
 
 .debug_abbrev   0x00000000      0x923
  .debug_abbrev  0x00000000       0xf3 src/board.o
@@ -1375,7 +1375,7 @@ OUTPUT(MicroMouse.elf elf32-littlearm)
  .debug_ranges  0x00000108      0x150 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
  .debug_ranges  0x00000258      0x190 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
 
-.debug_macro    0x00000000     0xcb0a
+.debug_macro    0x00000000     0xcb14
  .debug_macro   0x00000000      0x2f3 src/board.o
  .debug_macro   0x000002f3      0x844 src/board.o
  .debug_macro   0x00000b37       0x80 src/board.o
@@ -1435,41 +1435,41 @@ OUTPUT(MicroMouse.elf elf32-littlearm)
  .debug_macro   0x0000a9f2       0xd7 src/board.o
  .debug_macro   0x0000aac9       0x16 src/board.o
  .debug_macro   0x0000aadf      0x189 src/board.o
- .debug_macro   0x0000ac68      0x2fd src/main.o
- .debug_macro   0x0000af65      0x195 src/system_stm32f0xx.o
- .debug_macro   0x0000b0fa      0x2f3 src/uart.o
- .debug_macro   0x0000b3ed      0x197 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
- .debug_macro   0x0000b584      0x83e C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
- .debug_macro   0x0000bdc2      0x17f C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
- .debug_macro   0x0000bf41      0x1b1 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
- .debug_macro   0x0000c0f2      0x51c C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
- .debug_macro   0x0000c60e      0x1af C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
- .debug_macro   0x0000c7bd      0x34d C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
+ .debug_macro   0x0000ac68      0x307 src/main.o
+ .debug_macro   0x0000af6f      0x195 src/system_stm32f0xx.o
+ .debug_macro   0x0000b104      0x2f3 src/uart.o
+ .debug_macro   0x0000b3f7      0x197 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+ .debug_macro   0x0000b58e      0x83e C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+ .debug_macro   0x0000bdcc      0x17f C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+ .debug_macro   0x0000bf4b      0x1b1 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
+ .debug_macro   0x0000c0fc      0x51c C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
+ .debug_macro   0x0000c618      0x1af C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
+ .debug_macro   0x0000c7c7      0x34d C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
 
-.debug_line     0x00000000     0x3ba6
- .debug_line    0x00000000      0x816 src/board.o
- .debug_line    0x00000816      0x819 src/main.o
- .debug_line    0x0000102f      0x686 src/system_stm32f0xx.o
- .debug_line    0x000016b5      0x8a0 src/uart.o
- .debug_line    0x00001f55       0x80 startup/startup_stm32f072.o
- .debug_line    0x00001fd5      0x788 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
- .debug_line    0x0000275d      0x9e0 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
- .debug_line    0x0000313d      0xa69 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
+.debug_line     0x00000000     0x3ba2
+ .debug_line    0x00000000      0x811 src/board.o
+ .debug_line    0x00000811      0x81f src/main.o
+ .debug_line    0x00001030      0x686 src/system_stm32f0xx.o
+ .debug_line    0x000016b6      0x89b src/uart.o
+ .debug_line    0x00001f51       0x80 startup/startup_stm32f072.o
+ .debug_line    0x00001fd1      0x788 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+ .debug_line    0x00002759      0x9e0 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
+ .debug_line    0x00003139      0xa69 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
 
-.debug_str      0x00000000    0x44784
- .debug_str     0x00000000    0x433c3 src/board.o
-                              0x435fd (size before relaxing)
- .debug_str     0x000433c3       0x1c src/main.o
-                              0x43407 (size before relaxing)
- .debug_str     0x000433df      0x129 src/system_stm32f0xx.o
-                              0x3f7a7 (size before relaxing)
- .debug_str     0x00043508      0x35c src/uart.o
-                              0x437c9 (size before relaxing)
- .debug_str     0x00043864      0x1bc C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
+.debug_str      0x00000000    0x44789
+ .debug_str     0x00000000    0x433be src/board.o
+                              0x435f8 (size before relaxing)
+ .debug_str     0x000433be       0x26 src/main.o
+                              0x4340c (size before relaxing)
+ .debug_str     0x000433e4      0x129 src/system_stm32f0xx.o
+                              0x3f7a2 (size before relaxing)
+ .debug_str     0x0004350d      0x35c src/uart.o
+                              0x437c4 (size before relaxing)
+ .debug_str     0x00043869      0x1bc C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_gpio.o)
                               0x3f988 (size before relaxing)
- .debug_str     0x00043a20      0x5f3 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
+ .debug_str     0x00043a25      0x5f3 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_rcc.o)
                               0x3fd45 (size before relaxing)
- .debug_str     0x00044013      0x771 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
+ .debug_str     0x00044018      0x771 C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug\libstm32f072b-disco_stdperiph_lib.a(stm32f0xx_usart.o)
                               0x3ff9c (size before relaxing)
 
 .comment        0x00000000       0x6e
