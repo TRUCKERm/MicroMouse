@@ -3,6 +3,7 @@
 	<name>MicroMouse</name>
 	<comment></comment>
 	<projects>
+		<project>stm32f072b-disco_stdperiph_lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
