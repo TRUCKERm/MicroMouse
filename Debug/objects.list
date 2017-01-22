@@ -1,4 +1,5 @@
 "src/board.o"
+"src/delay.o"
 "src/main.o"
 "src/syscalls.o"
 "src/system_stm32f0xx.o"
