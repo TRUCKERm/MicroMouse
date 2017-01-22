@@ -9,7 +9,6 @@
 #include "common.h"
 
 char uartRxBuffer[30]; // this is the receiving buffer.
-char uartBuffer[50];
 uint16_t zaehler = 550;
 uint8_t charCounter = 0; // this variable counts the characters in uartRxBuffer (8-bit unsigned)
 
@@ -84,7 +83,7 @@ void USART1_IRQHandler() {
             {
                 // Removes \n and \r from the string
                 uartRxBuffer[charCounter - 1] = '\0';
-                UART_SendString(uartRxBuffer);
+                UART_SendString("got it\0");
                 UART_sendCrLf();
 
                 charCounter = -1;

@@ -36,7 +36,9 @@ src/main.o: ../src/main.c \
  C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Utilities/STM32F072B-Discovery/stm32f072b_discovery.h \
  C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/uart.h \
  C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/board.h \
- C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/servo.h
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/common.h \
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/servo.h \
+ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/delay.h
 
 C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/common.h:
 
@@ -112,4 +114,8 @@ C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/
 
 C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/board.h:
 
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/common.h:
+
 C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/servo.h:
+
+C:/Users/Ilja-NP/Google\ Drive/Uni/WiSe\ 16_17/RFE/Projektarbeit/MicroMouse/inc/delay.h:
