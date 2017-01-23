@@ -29,14 +29,11 @@ endif
 # All Target
 all: MicroMouse.elf
 
-dependents:
-	-cd C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Debug && $(MAKE) all
-
 # Tool invocations
-MicroMouse.elf: $(OBJS) $(USER_OBJS) C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Debug/libstm32f072b-disco_stdperiph_lib.a
+MicroMouse.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -L"C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug" -T"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "MicroMouse.elf" @"objects.list" $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -L"C:\Users\nemour\Documents\workspace\stm32f072b-disco_stdperiph_lib\Debug" -T"C:\Users\nemour\Documents\workspace\MicroMouse\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "MicroMouse.elf" @"objects.list" $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -54,6 +51,5 @@ post-build:
 
 .PHONY: all clean dependents
 .SECONDARY: post-build
-C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Debug/libstm32f072b-disco_stdperiph_lib.a:
 
 -include ../makefile.targets

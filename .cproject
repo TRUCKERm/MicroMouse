@@ -26,6 +26,14 @@
 								<option id="gnu.c.compiler.option.debugging.level.1768210409" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.502270714" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32f072b-disco_stdperiph_lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/STSW-STM32139}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/CMSIS/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/CMSIS/device}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/StdPeriph_Driver/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/STM32F072B-Discovery_FW_V1.0.1/Libraries/CMSIS/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/STM32F072B-Discovery_FW_V1.0.1/Libraries/CMSIS/Device/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/STM32F072B-Discovery_FW_V1.0.1/Libraries/STM32F0xx_StdPeriph_Driver/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Utilities/STM32F072B-Discovery}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32f072b-disco_stdperiph_lib/CMSIS/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/stm32f072b-disco_stdperiph_lib/CMSIS/device}&quot;"/>
@@ -104,4 +112,6 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

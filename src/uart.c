@@ -7,6 +7,7 @@
 
 #include "uart.h"
 #include "common.h"
+#include "analyzer.h"
 
 char uartRxBuffer[30]; // this is the receiving buffer.
 uint16_t zaehler = 550;
@@ -85,11 +86,18 @@ void USART1_IRQHandler() {
                 uartRxBuffer[charCounter - 1] = '\0';
                 UART_SendString("got it\0");
                 UART_sendCrLf();
+                UART_SendString(uartRxBuffer);
+                UART_sendCrLf();
+                uartInterrupt(uartRxBuffer);
+
+
 
                 charCounter = -1;
             }
         }
     }
+    // uartInterrupt(uartRxBuffer);
+//    UART_SendString(uartRxBuffer);
     // increase counter by one
     charCounter++;
 }
