@@ -14,6 +14,7 @@
 #include "stm32f0xx_usart.h"
 #include "stm32f0xx_dac.h"
 #include "stm32f072b_discovery.h"
+#include "math.h"
 //#include "stm32f0xx_conf.h"
 #include "stdio.h"
 

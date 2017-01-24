@@ -63,8 +63,6 @@ void Board_init_gpio()			// Initializes GPIO pins for operation of the periphera
     //*  BEGIN DREHGEBER INIT  *********************************
     //**********************************************************
 	GPIO_InitTypeDef gpioInitStruct3;
-    EXTI_InitTypeDef EXTI_InitStruct;
-    NVIC_InitTypeDef NVIC_InitStruct;
 
     /* Enable clock for GPIOD */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
@@ -163,16 +161,16 @@ void Board_enable_timers()
     //*  BEGIN DREHGEBER INIT  *********************************
     //**********************************************************
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
 
 	TIM_TimeBaseInitTypeDef timerInitStructure;
-	timerInitStructure.TIM_Prescaler = 40000;
+	timerInitStructure.TIM_Prescaler = 9999;
 	timerInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	timerInitStructure.TIM_Period = 500;
+	timerInitStructure.TIM_Period = 60000;
 	timerInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	timerInitStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM1, &timerInitStructure);
-	TIM_Cmd(TIM1, DISABLE);
+	TIM_TimeBaseInit(TIM6, &timerInitStructure);
+	TIM_Cmd(TIM6, DISABLE);
 
 }
 
