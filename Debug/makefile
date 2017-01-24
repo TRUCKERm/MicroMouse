@@ -10,6 +10,8 @@ RM := rm -rf
 -include sources.mk
 -include startup/subdir.mk
 -include src/subdir.mk
+-include Utilities/STM32F072B-Discovery/subdir.mk
+-include StdPeriph_Driver/src/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -36,7 +38,7 @@ dependents:
 MicroMouse.elf: $(OBJS) $(USER_OBJS) C:/Users/Ilja-NP/workspace/stm32f072b-disco_stdperiph_lib/Debug/libstm32f072b-disco_stdperiph_lib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -L"C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug" -T"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "MicroMouse.elf" @"objects.list" $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -mfloat-abi=soft -L"C:\Users\Ilja-NP\workspace\stm32f072b-disco_stdperiph_lib\Debug" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\CMSIS\device" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\CMSIS\core" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\CMSIS" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\inc" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\StdPeriph_Driver\inc" -L"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\Utilities\STM32F072B-Discovery" -T"C:\Users\Ilja-NP\Google Drive\Uni\WiSe 16_17\RFE\Projektarbeit\MicroMouse\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "MicroMouse.elf" @"objects.list" $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
