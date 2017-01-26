@@ -13,27 +13,87 @@
 #include "servo.h"
 #include "delay.h"
 #include "analyzer.h"
+#include "lre_gyro.h"
+#include "ultraschall.h"
 
 
 char uartBuffer[50];
 uint32_t elapsedtime = 0;
 uint32_t L3GD20_TIMEOUT_UserCallback(void);
-
+uint8_t datenErhalt = 0;
+uint8_t drehRateMessen=0;
+uint8_t Aready = 0, Bready = 0;
+uint8_t gyroMessen = 0;
+uint8_t gyro_ready = 0;
 
 int main(void)
 {
+	systickInit(1000);
+	datenErhalt=0;
+	gyroInit();
 	Board_init_gpio();
+	Board_enable_timers();
 	UART_init();
 	UART_enable_interrupt();
-    // initiate all Hardware to use the Gyro
-    gyroInit();
+    waitForSysTicks(500);
+    init_ultrasonicSensor_intputPin_Left();
+    init_ultrasonicSensor_outputPin_Left();
+    init_ultrasonicSensor_timer_Left();
+    waitForSysTicks(500);
+    init_ultrasonicSensor_intputPin_Front();
+    init_ultrasonicSensor_outputPin_Front();
+    init_ultrasonicSensor_timer_Front();
+    waitForSysTicks(500);
+    init_ultrasonicSensor_intputPin_Right();
+    init_ultrasonicSensor_outputPin_Right();
+    init_ultrasonicSensor_timer_Right();
+    // initiate all Hardware to use the Gyro;
+    waitForSysTicks(500);
     lre_ledInit();
+    uint8_t i = 0;
+	uint8_t j = 0;//	TIM_SetCompare1(TIM17, 1000);
+//	TIM_SetCompare1(TIM16, 2000);
 
 	while(1)
 	{
 		measure_gyro();
+		if (datenErhalt==1){
+
+			UART_analyzer();
+		}
+
+		if (drehRateMessen)
+		{
+			if (Aready && Bready)
+			{
+				drehRateAusgeben();
+				i++;
+				if (i > 10)
+				{
+					drehRateMessen = 0;
+					i = 0;
+					TIM_Cmd(TIM6,DISABLE);
+					TIM_Cmd(TIM7,DISABLE);
+					TIM_SetCounter(TIM6,0);
+					TIM_SetCounter(TIM7,0);
+				}
+			}
+		}
+
+	if (gyroMessen)
+	{
+			//if (gyro_ready) {
+			gyroAusgeben();
+			j++;
+			if (j>49){
+			gyroMessen=0;
+			//}
+		}
+
+
 	}
 
+	}
 }
 
 //void EXTI2_3_IRQHandler(void) {

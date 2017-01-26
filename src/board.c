@@ -33,6 +33,102 @@ void Board_init_gpio()			// Initializes GPIO pins for operation of the periphera
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_1);
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource10, GPIO_AF_1);
 
+    //**********************************************************
+    //*  BEGIN SERVO INIT  *************************************
+    //**********************************************************
+    // all the initiation structs we need to configure a PWM
+	GPIO_InitTypeDef gpioInitStruct2;
+
+	// initiate the GPIO
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+
+	gpioInitStruct2.GPIO_Mode = GPIO_Mode_AF; // we will use the pin in alternative function mode an bind it to timer 17 later (see line 70)
+	gpioInitStruct2.GPIO_OType = GPIO_OType_PP; // Open-Drain with a Pullup Resistor would work too
+	gpioInitStruct2.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9; // Pin 9 is Timer 17s output compare channel 1 (see datasheet, table 15 on page 44, column AF2)
+	gpioInitStruct2.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	gpioInitStruct2.GPIO_Speed = GPIO_Speed_Level_1; // 2 MHz is plenty in this case
+
+	GPIO_Init(GPIOB, &gpioInitStruct2);
+
+	// bind Pin B9 to alternative function 2 (TIM17_CH1, again.. datasheet, table 15 on page 44)
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource9, GPIO_AF_2);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource8, GPIO_AF_2);
+
+	// initiate Timer 16
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM16, ENABLE);
+	// initiate Timer 17
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM17, ENABLE);
+
+    //**********************************************************
+    //*  BEGIN DREHGEBER INIT  *********************************
+    //**********************************************************
+
+			//**********************************************************
+			//*  BEGIN DREHGEBER RECHTS  *******************************
+			//**********************************************************
+
+    // Enable external interrupts
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+
+	GPIO_InitTypeDef gpioInitStruct3;
+
+    /* Enable clock for GPIOD */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
+
+
+
+
+    gpioInitStruct3.GPIO_Mode = GPIO_Mode_IN;
+    gpioInitStruct3.GPIO_Pin = GPIO_Pin_2;
+    gpioInitStruct3.GPIO_Speed = GPIO_Speed_Level_1;
+
+    GPIO_Init(GPIOC, &gpioInitStruct3);
+
+
+	EXTI_InitTypeDef extiInitStruct;
+
+	extiInitStruct.EXTI_Line = EXTI_Line2; // this corresponds to the pins number
+	extiInitStruct.EXTI_LineCmd = ENABLE; // this seems somewhat stupid. Of course we want it to be enabled.. (see EXTI_InitTypeDef definition (strg+left click) for explanation)
+	extiInitStruct.EXTI_Mode = EXTI_Mode_Interrupt; // we will only use the interrupt mode here. Events can be used to wake up the processor core for instance
+	extiInitStruct.EXTI_Trigger = EXTI_Trigger_Rising; // this controls if a rising, a falling or both edges can generete the interrupt
+
+	EXTI_Init(&extiInitStruct);
+	// Enable interrupt line 2-3
+	NVIC_EnableIRQ(EXTI2_3_IRQn);
+
+    // Connect EXTI2 Line to PD2 pin
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource2);
+
+	//**********************************************************
+	//*  BEGIN DREHGEBER LINKS  *******************************
+	//**********************************************************
+
+    /* Enable clock for GPIOC */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+
+
+	GPIO_InitTypeDef gpioInitStruct4;
+
+    gpioInitStruct4.GPIO_Mode = GPIO_Mode_IN;
+    gpioInitStruct4.GPIO_Pin = GPIO_Pin_12;
+    gpioInitStruct4.GPIO_Speed = GPIO_Speed_Level_1;
+
+    GPIO_Init(GPIOC, &gpioInitStruct4);
+
+	EXTI_InitTypeDef extiInitStruct2;
+
+	extiInitStruct2.EXTI_Line = EXTI_Line12; // this corresponds to the pins number
+	extiInitStruct2.EXTI_LineCmd = ENABLE; // this seems somewhat stupid. Of course we want it to be enabled.. (see EXTI_InitTypeDef definition (strg+left click) for explanation)
+	extiInitStruct2.EXTI_Mode = EXTI_Mode_Interrupt; // we will only use the interrupt mode here. Events can be used to wake up the processor core for instance
+	extiInitStruct2.EXTI_Trigger = EXTI_Trigger_Rising; // this controls if a rising, a falling or both edges can generete the interrupt
+
+	EXTI_Init(&extiInitStruct2);
+
+	NVIC_EnableIRQ(EXTI4_15_IRQn);
+
+	// Connect EXTI12 Line to PC12 pin
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource12);
+
 }
 
 void Board_enable_timers()
@@ -103,16 +199,28 @@ void Board_enable_timers()
     //*  BEGIN DREHGEBER INIT  *********************************
     //**********************************************************
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
 
-	TIM_TimeBaseInitTypeDef timerInitStructure;
-	timerInitStructure.TIM_Prescaler = 40000;
-	timerInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	timerInitStructure.TIM_Period = 500;
-	timerInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	timerInitStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM1, &timerInitStructure);
-	TIM_Cmd(TIM1, DISABLE);
+	TIM_TimeBaseInitTypeDef timerInitStructure1;
+	timerInitStructure1.TIM_Prescaler = 9999;
+	timerInitStructure1.TIM_CounterMode = TIM_CounterMode_Up;
+	timerInitStructure1.TIM_Period = 60000;
+	timerInitStructure1.TIM_ClockDivision = TIM_CKD_DIV1;
+	timerInitStructure1.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM6, &timerInitStructure1);
+	TIM_Cmd(TIM6, DISABLE);
+
+
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
+
+	TIM_TimeBaseInitTypeDef timerInitStructure2;
+	timerInitStructure2.TIM_Prescaler = 9999;
+	timerInitStructure2.TIM_CounterMode = TIM_CounterMode_Up;
+	timerInitStructure2.TIM_Period = 60000;
+	timerInitStructure2.TIM_ClockDivision = TIM_CKD_DIV1;
+	timerInitStructure2.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM7, &timerInitStructure2);
+	TIM_Cmd(TIM7, DISABLE);
 
 }
 

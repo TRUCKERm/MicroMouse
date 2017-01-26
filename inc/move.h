@@ -11,6 +11,8 @@
 #include "analyzer.h"
 #include "common.h"
 #include "uart.h"
+#include "servo.h"
+#include "delay.h"
 
 
 void move_speed(int speed);

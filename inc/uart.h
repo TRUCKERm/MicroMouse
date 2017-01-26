@@ -16,4 +16,6 @@ void UART_enable_interrupt();
 void UART_SendString(char *stringPointer);
 void UART_sendCrLf(void);
 
+void UART_analyzer(void);
+
 #endif /* UART_H_ */

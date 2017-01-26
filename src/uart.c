@@ -8,6 +8,7 @@
 #include "uart.h"
 #include "common.h"
 #include "analyzer.h"
+#include "lre_temp.h"
 
 char uartRxBuffer[30]; // this is the receiving buffer.
 uint16_t zaehler = 550;
@@ -32,6 +33,8 @@ void UART_init()
     USART_Init(USART1, &uartInitStruct);
     // usart modules also have to be enabled before they work
     USART_Cmd(USART1, ENABLE);
+    temp_init();
+
 }
 
 void UART_enable_interrupt()
@@ -77,22 +80,15 @@ void USART1_IRQHandler() {
     uartRxBuffer[charCounter] = USART_ReceiveData(USART1);
     // check for the termination characters '\r' and '\n'
     if (uartRxBuffer[charCounter] == '\n') {
-        // we now have to check if there are already more than one character in the buffer. Remember: charCounter starts counting at zero
+        // we -now have to check if there are already more than one character in the buffer. Remember: charCounter starts counting at zero
         if (charCounter >= 1) {
             // now check for the carriage return \r
             if (uartRxBuffer[charCounter - 1] == '\r')
             {
-                // Removes \n and \r from the string
                 uartRxBuffer[charCounter - 1] = '\0';
-                UART_SendString("got it\0");
-                UART_sendCrLf();
-                UART_SendString(uartRxBuffer);
-                UART_sendCrLf();
-                uartInterrupt(uartRxBuffer);
-
-
 
                 charCounter = -1;
+            	datenErhalt=1;
             }
         }
     }
@@ -100,4 +96,15 @@ void USART1_IRQHandler() {
 //    UART_SendString(uartRxBuffer);
     // increase counter by one
     charCounter++;
+}
+
+void UART_analyzer(void){
+	  // Removes \n and \r from the string
+
+    UART_SendString("got it\0");
+    UART_sendCrLf();
+    UART_SendString(uartRxBuffer);
+    UART_sendCrLf();
+    uartInterrupt(uartRxBuffer);
+    datenErhalt = 0;
 }
