@@ -62,12 +62,19 @@ void Board_init_gpio()			// Initializes GPIO pins for operation of the periphera
     //**********************************************************
     //*  BEGIN DREHGEBER INIT  *********************************
     //**********************************************************
+
+			//**********************************************************
+			//*  BEGIN DREHGEBER RECHTS  *******************************
+			//**********************************************************
+
+    // Enable external interrupts
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+
 	GPIO_InitTypeDef gpioInitStruct3;
 
     /* Enable clock for GPIOD */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
-    // Enable SYSCFG clock; EXTI Module is part of that (the more you know...)
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+
 
 
 
@@ -77,9 +84,6 @@ void Board_init_gpio()			// Initializes GPIO pins for operation of the periphera
 
     GPIO_Init(GPIOC, &gpioInitStruct3);
 
-    // Connect EXTI11 Line to PC11 pin
-	// this is similar to binding a pin to an alternative function
-	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource2);
 
 	EXTI_InitTypeDef extiInitStruct;
 
@@ -91,6 +95,40 @@ void Board_init_gpio()			// Initializes GPIO pins for operation of the periphera
 	EXTI_Init(&extiInitStruct);
 	// Enable interrupt line 2-3
 	NVIC_EnableIRQ(EXTI2_3_IRQn);
+
+    // Connect EXTI2 Line to PD2 pin
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource2);
+
+	//**********************************************************
+	//*  BEGIN DREHGEBER LINKS  *******************************
+	//**********************************************************
+
+    /* Enable clock for GPIOC */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+
+
+	GPIO_InitTypeDef gpioInitStruct4;
+
+    gpioInitStruct4.GPIO_Mode = GPIO_Mode_IN;
+    gpioInitStruct4.GPIO_Pin = GPIO_Pin_12;
+    gpioInitStruct4.GPIO_Speed = GPIO_Speed_Level_1;
+
+    GPIO_Init(GPIOC, &gpioInitStruct4);
+
+	EXTI_InitTypeDef extiInitStruct2;
+
+	extiInitStruct2.EXTI_Line = EXTI_Line12; // this corresponds to the pins number
+	extiInitStruct2.EXTI_LineCmd = ENABLE; // this seems somewhat stupid. Of course we want it to be enabled.. (see EXTI_InitTypeDef definition (strg+left click) for explanation)
+	extiInitStruct2.EXTI_Mode = EXTI_Mode_Interrupt; // we will only use the interrupt mode here. Events can be used to wake up the processor core for instance
+	extiInitStruct2.EXTI_Trigger = EXTI_Trigger_Rising; // this controls if a rising, a falling or both edges can generete the interrupt
+
+	EXTI_Init(&extiInitStruct2);
+
+	NVIC_EnableIRQ(EXTI4_15_IRQn);
+
+	// Connect EXTI12 Line to PC12 pin
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource12);
+
 }
 
 void Board_enable_timers()
@@ -163,14 +201,26 @@ void Board_enable_timers()
 
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
 
-	TIM_TimeBaseInitTypeDef timerInitStructure;
-	timerInitStructure.TIM_Prescaler = 9999;
-	timerInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	timerInitStructure.TIM_Period = 60000;
-	timerInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	timerInitStructure.TIM_RepetitionCounter = 0;
-	TIM_TimeBaseInit(TIM6, &timerInitStructure);
+	TIM_TimeBaseInitTypeDef timerInitStructure1;
+	timerInitStructure1.TIM_Prescaler = 9999;
+	timerInitStructure1.TIM_CounterMode = TIM_CounterMode_Up;
+	timerInitStructure1.TIM_Period = 60000;
+	timerInitStructure1.TIM_ClockDivision = TIM_CKD_DIV1;
+	timerInitStructure1.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM6, &timerInitStructure1);
 	TIM_Cmd(TIM6, DISABLE);
+
+
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
+
+	TIM_TimeBaseInitTypeDef timerInitStructure2;
+	timerInitStructure2.TIM_Prescaler = 9999;
+	timerInitStructure2.TIM_CounterMode = TIM_CounterMode_Up;
+	timerInitStructure2.TIM_Period = 60000;
+	timerInitStructure2.TIM_ClockDivision = TIM_CKD_DIV1;
+	timerInitStructure2.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM7, &timerInitStructure2);
+	TIM_Cmd(TIM7, DISABLE);
 
 }
 
